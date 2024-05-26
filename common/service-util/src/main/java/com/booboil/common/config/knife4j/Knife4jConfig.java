@@ -53,10 +53,10 @@ public class Knife4jConfig {
     private ApiInfo adminApiInfo(){
 
         return new ApiInfoBuilder()
-                .title("后台管理系统-API文档")
+                .title("一体化办公系统-API文档")
                 .description("本文档描述了后台管理系统微服务接口定义")
                 .version("1.0")
-                .contact(new Contact("booboil", "http://booboil.com", "booboil@qq.com"))
+                .contact(new Contact("booboil", "https://github.com/booboil", "booboil@163.com"))
                 .build();
     }
 

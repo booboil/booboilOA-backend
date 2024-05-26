@@ -70,7 +70,7 @@ public class TestMpDemo1 {
     public void testQuery1() {
         //创建QueryWrapper对象，调用方法封装条件
         QueryWrapper<SysRole> wrapper = new QueryWrapper<>();
-        wrapper.eq("role_name","总经理");
+        wrapper.eq("role_name","系统管理员");
         //调用mp方法实现查询操作
         List<SysRole> list = mapper.selectList(wrapper);
         System.out.println(list);
@@ -80,7 +80,7 @@ public class TestMpDemo1 {
     public void testQuery2() {
         //LambdaQueryWrapper，调用方法封装条件
         LambdaQueryWrapper<SysRole> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(SysRole::getRoleName,"总经理");
+        wrapper.eq(SysRole::getRoleName,"系统管理员");
         //调用mp方法实现查询操作
         List<SysRole> list = mapper.selectList(wrapper);
         System.out.println(list);
