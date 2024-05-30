@@ -27,9 +27,9 @@ public class GlobalExceptionHandler {
     }
 
     //自定义异常处理
-    @ExceptionHandler(GuiguException.class)
+    @ExceptionHandler(BooboilException.class)
     @ResponseBody
-    public Result error(GuiguException e) {
+    public Result error(BooboilException e) {
         e.printStackTrace();
         return Result.fail().code(e.getCode()).message(e.getMsg());
     }

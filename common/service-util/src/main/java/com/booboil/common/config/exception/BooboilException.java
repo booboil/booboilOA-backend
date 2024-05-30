@@ -4,12 +4,12 @@ import com.booboil.common.result.ResultCodeEnum;
 import lombok.Data;
 
 @Data
-public class GuiguException extends RuntimeException {
+public class BooboilException extends RuntimeException {
 
     private Integer code;//状态码
     private String msg;//描述信息
 
-    public GuiguException(Integer code,String msg) {
+    public BooboilException(Integer code, String msg) {
         super(msg);
         this.code = code;
         this.msg = msg;
@@ -19,7 +19,7 @@ public class GuiguException extends RuntimeException {
      * 接收枚举类型对象
      * @param resultCodeEnum
      */
-    public GuiguException(ResultCodeEnum resultCodeEnum) {
+    public BooboilException(ResultCodeEnum resultCodeEnum) {
         super(resultCodeEnum.getMessage());
         this.code = resultCodeEnum.getCode();
         this.msg = resultCodeEnum.getMessage();

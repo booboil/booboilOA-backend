@@ -1,7 +1,7 @@
 package com.booboil.auth.controller;
 
 import com.booboil.auth.service.SysRoleService;
-import com.booboil.common.config.exception.GuiguException;
+import com.booboil.common.config.exception.BooboilException;
 import com.booboil.common.result.Result;
 import com.booboil.model.system.SysRole;
 import com.booboil.vo.system.AssginRoleVo;
@@ -51,7 +51,7 @@ public class SysRoleController {
         try {
             int i = 10/0;
         } catch (Exception e) {
-            throw new GuiguException(20001,"执行了自定义异常处理..");
+            throw new BooboilException(20001,"执行了自定义异常处理..");
         }
         return Result.ok(list);
     }

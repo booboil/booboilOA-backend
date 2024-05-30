@@ -2,7 +2,7 @@ package com.booboil.auth.service.impl;
 
 import com.booboil.auth.service.SysRoleMenuService;
 import com.booboil.auth.utils.MenuHelper;
-import com.booboil.common.config.exception.GuiguException;
+import com.booboil.common.config.exception.BooboilException;
 import com.booboil.model.system.SysMenu;
 import com.booboil.auth.mapper.SysMenuMapper;
 import com.booboil.auth.service.SysMenuService;
@@ -62,7 +62,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         wrapper.eq(SysMenu::getParentId,id);
         Integer count = baseMapper.selectCount(wrapper);
         if(count > 0) {
-            throw new GuiguException(201,"菜单不能删除");
+            throw new BooboilException(201,"菜单不能删除");
         }
         baseMapper.deleteById(id);
     }

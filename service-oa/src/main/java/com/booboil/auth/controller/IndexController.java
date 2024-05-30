@@ -2,7 +2,7 @@ package com.booboil.auth.controller;
 
 import com.booboil.auth.service.SysMenuService;
 import com.booboil.auth.service.SysUserService;
-import com.booboil.common.config.exception.GuiguException;
+import com.booboil.common.config.exception.BooboilException;
 import com.booboil.common.jwt.JwtHelper;
 import com.booboil.common.result.Result;
 import com.booboil.common.utils.MD5;
@@ -46,7 +46,7 @@ public class IndexController {
 
         //3 用户信息是否存在
         if(sysUser == null) {
-            throw new GuiguException(201,"用户不存在");
+            throw new BooboilException(201,"用户不存在");
         }
 
         //4 判断密码
@@ -55,12 +55,12 @@ public class IndexController {
         //获取输入的密码
         String password_input = MD5.encrypt(loginVo.getPassword());
         if(!password_db.equals(password_input)) {
-            throw new GuiguException(201,"密码错误");
+            throw new BooboilException(201,"密码错误");
         }
 
         //5 判断用户是否被禁用  1 可用 0 禁用
         if(sysUser.getStatus().intValue()==0) {
-            throw new GuiguException(201,"用户已经被禁用");
+            throw new BooboilException(201,"用户已经被禁用");
         }
 
         //6 使用jwt根据用户id和用户名称生成token字符串
