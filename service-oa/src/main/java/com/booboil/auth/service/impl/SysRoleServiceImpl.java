@@ -27,27 +27,22 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     //1 查询所有角色 和 当前用户所属角色
     @Override
     public Map<String, Object> findRoleDataByUserId(Long userId) {
-        
-        //1 查询所有角色，返回list集合，返回
-        List<SysRole> allRoleList = 
-                baseMapper.selectList(null);
-
-        //2 根据userid查询 角色用户关系表，查询userid对应所有角色id
+        //1、查询所有角色
+        List<SysRole> allRoleList = baseMapper.selectList(null);
+        //2、根据userid查询 角色用户关系表，查询userid对应所有角色id (查询获取给定用户的已分配角色列表)
         LambdaQueryWrapper<SysUserRole> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(SysUserRole::getUserId,userId);
         List<SysUserRole> existUserRoleList = sysUserRoleService.list(wrapper);
 
-        //从查询出来的用户id对应角色list集合，获取所有角色id
-//        List<Long> list = new ArrayList<>();
+        //从查询出来的existUserRoleList集合，获取所有角色id
+//        List<Long> existRoleIdList = new ArrayList<>();
 //        for (SysUserRole sysUserRole:existUserRoleList) {
 //            Long roleId = sysUserRole.getRoleId();
 //            list.add(roleId);
 //        }
         List<Long> existRoleIdList =
                 existUserRoleList.stream().map(c -> c.getRoleId()).collect(Collectors.toList());
-
-        //3 根据查询所有角色id，找到对应角色信息
-        //根据角色id到所有的角色的list集合进行比较
+        //3、比较每个角色是否存在于已分配角色列表
         List<SysRole> assignRoleList = new ArrayList<>();
         for(SysRole sysRole : allRoleList) {
             //比较
@@ -55,8 +50,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
                 assignRoleList.add(sysRole);
             }
         }
-        
-        //4 把得到两部分数据封装map集合，返回
+        //4、将得到两部分数据封装map集合
         Map<String, Object> roleMap = new HashMap<>();
         roleMap.put("assginRoleList", assignRoleList);
         roleMap.put("allRolesList", allRoleList);
