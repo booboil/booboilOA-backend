@@ -19,8 +19,7 @@ public class CodeGet {
         // 2、全局配置
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir("C:\\Users\\Administrator\\Desktop\\booboil-oa\\booboil-oa\\service-oa"+"/src/main/java");
-
+        gc.setOutputDir("D:\\IdeaProject\\OA\\booboilOA-backend\\service-oa"+"/src/main/java");
         gc.setServiceName("%sService");	//去掉Service接口的首字母I
         gc.setAuthor("booboil");
         gc.setOpen(false);
@@ -28,10 +27,10 @@ public class CodeGet {
 
         // 3、数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/booboil-oa?serverTimezone=GMT%2B8&useSSL=false");
+        dsc.setUrl("jdbc:mysql://localhost:3306/booboil_oa?serverTimezone=GMT%2B8&useSSL=false");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("root");
+        dsc.setPassword("66035912345");
         dsc.setDbType(DbType.MYSQL);
         mpg.setDataSource(dsc);
 

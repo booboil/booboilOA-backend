@@ -21,8 +21,7 @@ public class MenuHelper {
         return trees;
     }
 
-    public static SysMenu getChildren(SysMenu sysMenu,
-                                      List<SysMenu> sysMenuList) {
+    public static SysMenu getChildren(SysMenu sysMenu, List<SysMenu> sysMenuList) {
         sysMenu.setChildren(new ArrayList<SysMenu>());
         //遍历所有菜单数据，判断 id 和 parentId对应关系
         for(SysMenu it: sysMenuList) {
