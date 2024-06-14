@@ -47,7 +47,6 @@ public class SysMenuController {
     @ApiOperation("菜单列表")
     @GetMapping("findNodes")
     public Result findNodes() {
-
         List<SysMenu> list = sysMenuService.findNodes();
         return Result.ok(list);
     }

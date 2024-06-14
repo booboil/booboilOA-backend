@@ -72,14 +72,7 @@ public class SysUserController {
         return Result.ok(pageModel);
     }
 
-    @ApiOperation(value = "获取用户")
-    @GetMapping("get/{id}")
-    public Result get(@PathVariable Long id) {
-        SysUser user = service.getById(id);
-        return Result.ok(user);
-    }
-
-    @ApiOperation(value = "保存用户")
+    @ApiOperation(value = "新增用户")
     @PostMapping("save")
     public Result save(@RequestBody SysUser user) {
         //密码进行加密，使用MD5
@@ -88,6 +81,13 @@ public class SysUserController {
 
         service.save(user);
         return Result.ok();
+    }
+
+    @ApiOperation(value = "获取用户")
+    @GetMapping("get/{id}")
+    public Result get(@PathVariable Long id) {
+        SysUser user = service.getById(id);
+        return Result.ok(user);
     }
 
     @ApiOperation(value = "更新用户")
